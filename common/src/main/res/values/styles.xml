@@ -1,13 +1,13 @@
-<resources  xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <style name="Dialog_Default" parent="Theme.AppCompat.Light.Dialog">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <!--<item name="android:windowFrame">@null</item>-->
         <!--<item name="android:windowNoTitle">true</item>-->
-        <item name="android:windowIsFloating">true</item> <!-- 对话框是否浮动 -->
-        <item name="android:windowContentOverlay">@null</item> <!-- 对话框是否有遮盖 -->
-        <item name="android:windowFullscreen">true</item> <!-- 设置全屏 -->
+        <item name="android:windowIsFloating">true</item>       <!-- 对话框是否浮动 -->
+        <item name="android:windowContentOverlay">@null</item>  <!-- 对话框是否有遮盖 -->
+        <item name="android:windowFullscreen">true</item>       <!-- 设置全屏 -->
     </style>
 
     <style name="Grid_Item_Normal">
