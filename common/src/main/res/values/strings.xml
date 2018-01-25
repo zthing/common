@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="number_0">0</string>
+    <string name="number_1">1</string>
+    <string name="number_2">2</string>
+    <string name="number_3">3</string>
+    <string name="number_4">4</string>
+    <string name="number_5">5</string>
+    <string name="number_6">6</string>
+    <string name="number_7">7</string>
+    <string name="number_8">8</string>
+    <string name="number_9">9</string>
+    <string name="key_.">.</string>
+    <string name="key_00">00</string>
+    <string name="key_500">500</string>
+    <string name="key_800">800</string>
+    <string name="key_1000">1000</string>
+    <string name="key_2000">2000</string>
+    <string name="key_delete">退格</string>
+    <string name="key_clear">清除</string>
+</resources>

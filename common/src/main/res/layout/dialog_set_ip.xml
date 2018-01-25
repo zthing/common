@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <EditText
+            android:id="@+id/edit_ip1"
+            style="@style/Edit_Ip"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="#E0E0E0"/>
+
+        <EditText
+            android:id="@+id/edit_ip2"
+            style="@style/Edit_Ip"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="#E0E0E0"/>
+
+        <EditText
+            android:id="@+id/edit_ip3"
+            style="@style/Edit_Ip"/>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0.1dp"
+            android:layout_margin="10dp"
+            android:background="#E0E0E0"/>
+
+        <EditText
+            android:id="@+id/edit_ip4"
+            style="@style/Edit_Ip"/>
+    </LinearLayout>
+
+    <cn.zt.common.dialog.custom.GridLayoutKeyBoard
+        android:id="@+id/gl_key_ip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:minWidth="400dp"
+        app:columnCount="4"
+        app:rowCount="3">
+
+        <TextView
+            style="@style/Grid_Item_Normal"
+            android:text="@string/number_1"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal"
+            android:text="@string/number_2"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal"
+            android:text="@string/number_3"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal.End"
+            android:text="@string/key_delete"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal"
+            android:text="@string/number_4"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal"
+            android:text="@string/number_5"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal"
+            android:text="@string/number_6"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal.End"
+            android:text="@string/key_."
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal.Bottom"
+            android:text="@string/number_7"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal.Bottom"
+            android:text="@string/number_8"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal.Bottom"
+            android:text="@string/number_9"
+            app:keyType="TYPE_CUSTOM"/>
+
+        <TextView
+            style="@style/Grid_Item_Normal.Over"
+            android:text="@string/number_0"
+            app:keyType="TYPE_CUSTOM"/>
+    </cn.zt.common.dialog.custom.GridLayoutKeyBoard>
+</LinearLayout>

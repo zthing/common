@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="GridLayoutKeyBoard_Layout">
+        <attr name="inputText" format="string"/> <!--输入文字-->
+        <attr name="keyType"><!--点击输入类型-->
+            <enum name="TYPE_NONE" value="0"/>      <!--什么都不干-->
+            <enum name="TYPE_TEXT" value="1"/>      <!--文本末尾添加文字-->
+            <enum name="TYPE_DELETE" value="2"/>    <!--删除-->
+            <enum name="TYPE_CLEAR" value="3"/>     <!--清除-->
+            <enum name="TYPE_REPLACE" value="4"/>   <!--替换整个输入框-->
+            <enum name="TYPE_CUSTOM" value="5"/>    <!--返回点击事件自定义操作-->
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="GridLayoutKeyBoard">
+        <attr name="inputView" format="reference"/> <!--输入视图的 ID-->
+    </declare-styleable>
+</resources>
