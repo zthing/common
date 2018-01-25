@@ -21,6 +21,7 @@ public class TextDialogBuilder extends SimpleDialogBuilder<TextDialogBuilder> {
     public TextDialogBuilder(@NonNull Context context) {
         super(context, R.style.Dialog_Default);
         params(Utils.getDefaultDialogParamsBuilder().params());
+        hideCloseView(true);
         addView(R.layout.dialog_view_message);
     }
 

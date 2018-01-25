@@ -49,11 +49,17 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
 
     // 存放title
     private CharSequence title;
+    private boolean hideCloseView;
     // 存放按钮
     private final LinkedHashMap<CharSequence, SimpleDialogBtnClickListener> MAP_BUTTON = new LinkedHashMap<>();
 
     public SimpleDialogBuilder(@NonNull Context context) {
         this(context, SimpleDialogBuilder.getDialogParams().themeResId);
+    }
+
+    public C hideCloseView(boolean hideCloseView) {
+        this.hideCloseView = hideCloseView;
+        return getThis();
     }
 
     public SimpleDialogBuilder(@NonNull Context context, int themeResId) {
@@ -104,7 +110,10 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
         }
         if (mView != null) {
             if (mParams.titleId > 0 && title != null) {
-                ((TextView) mView.findViewById(mParams.titleId)).setText(title);
+                ((TextView) findView(mParams.titleId)).setText(title);
+            }
+            if (mParams.closeId > 0 && hideCloseView) {
+                findView(mParams.closeId).setVisibility(View.GONE);
             }
             if (linearButton != null && MAP_BUTTON.size() > 0 && mParams.btnLayout > 0) {
                 int size = MAP_BUTTON.entrySet().size();
