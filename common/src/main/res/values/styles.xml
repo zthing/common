@@ -21,9 +21,9 @@
         <item name="android:layout_marginStart" tools:targetApi="jelly_bean_mr1">1dp</item>
         <item name="android:layout_marginLeft">1dp</item>
         <item name="android:layout_marginTop">1dp</item>
-        <item name="cn.zt.common:layout_columnWeight">1</item>
-        <item name="cn.zt.common:layout_rowWeight">1</item>
-        <item name="cn.zt.common:layout_gravity">fill</item>
+        <item name="layout_columnWeight">1</item>
+        <item name="layout_rowWeight">1</item>
+        <item name="layout_gravity">fill</item>
     </style>
 
     <style name="Grid_Item_Normal.End" parent="Grid_Item_Normal">
