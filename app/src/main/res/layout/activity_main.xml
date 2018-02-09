@@ -7,9 +7,10 @@
     android:gravity="center"
     tools:context="cn.zt.common.MainActivity">
 
-    <TextView
+    <cn.zt.common.widget.TypefaceTextView
         android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="弹窗测试"
+        android:textSize="30sp"/>
 </LinearLayout>
