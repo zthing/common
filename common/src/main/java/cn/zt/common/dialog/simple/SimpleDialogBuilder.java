@@ -1,7 +1,7 @@
 package cn.zt.common.dialog.simple;
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Build;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -159,80 +159,163 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
             if (mParams.hideInput) {
                 window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
             }
-            mDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                @Override
-                public void onShow(DialogInterface dialog) {
-                    WindowManager.LayoutParams params = window.getAttributes();
-                    int screenWidth = ViewUtils.getScreenWidth();
-                    int screenHeight = ViewUtils.getScreenHeight();
-                    if (mParams.width > 0) {
-                        params.width = mParams.width > 1 ? ViewUtils.dp2px(mParams.width)
-                                : (int) (screenWidth * mParams.width);
-                    }
-                    if (mParams.height > 0) {
-                        params.height = mParams.height > 1 ? ViewUtils.dp2px(mParams.height)
-                                : (int) (screenHeight * mParams.height);
-                    }
-                    if (mParams.minWidth > 0) {
-                        int minWidth = mParams.minWidth > 1 ? ViewUtils.dp2px(mParams.minWidth)
-                                : (int) (screenHeight * mParams.minWidth);
-                        if (params.width < minWidth || (mView != null && mView.getMeasuredWidth() < minWidth)) {
-                            params.width = minWidth;
-                        }
-                    }
-                    if (mParams.minHeight > 0) {
-                        int minHeight = mParams.minHeight > 1 ? ViewUtils.dp2px(mParams.minHeight)
-                                : (int) (screenHeight * mParams.minHeight);
-                        if (params.height < minHeight || (mView != null && mView.getMeasuredHeight() < minHeight)) {
-                            params.height = minHeight;
-                        }
-                    }
-                    if (mParams.maxWidth > 0) {
-                        int maxWidth = mParams.maxWidth > 1 ? ViewUtils.dp2px(mParams.maxWidth)
-                                : (int) (screenHeight * mParams.maxWidth);
-                        if (params.width > maxWidth || (mView != null && mView.getMeasuredWidth() > maxWidth)) {
-                            params.width = maxWidth;
-                        }
-                    }
-                    if (mParams.maxHeight > 0) {
-                        int maxHeight = mParams.maxHeight > 1 ? ViewUtils.dp2px(mParams.maxHeight)
-                                : (int) (screenHeight * mParams.maxHeight);
-                        if (params.height > maxHeight || (mView != null && mView.getMeasuredHeight() > maxHeight)) {
-                            params.height = maxHeight;
-                        }
-                    }
-                    if (mView != null) {
-                        ViewGroup.LayoutParams layoutParams = mView.getLayoutParams();
-                        if (layoutParams == null) {
-                            layoutParams = new ViewGroup.LayoutParams(params.width, params.height);
-                            mView.setLayoutParams(layoutParams);
-                        } else {
-                            if (params.width > 0) {
-                                layoutParams.width = params.width;
-                            }
-                            if (params.height > 0) {
-                                layoutParams.height = params.height;
-                            }
-                        }
-                    }
+//            mDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+//                @Override
+//                public void onShow(DialogInterface dialog) {
+//                    WindowManager.LayoutParams params = window.getAttributes();
+//                    int screenWidth = ViewUtils.getScreenWidth();
+//                    int screenHeight = ViewUtils.getScreenHeight();
+//                    if (!ViewUtils.isFullScreen((Activity) mContext)) {
+//                        screenHeight = -ViewUtils.getStatusBarHeight();
+//                    }
+//                    if (mParams.width > 0) {
+//                        params.width = mParams.width > 1 ? ViewUtils.dp2px(mParams.width)
+//                                : (int) (screenWidth * mParams.width);
+//                    }
+//                    if (mParams.height > 0) {
+//                        params.height = mParams.height > 1 ? ViewUtils.dp2px(mParams.height)
+//                                : (int) (screenHeight * mParams.height);
+//                    }
+//                    if (mParams.minWidth > 0) {
+//                        int minWidth = mParams.minWidth > 1 ? ViewUtils.dp2px(mParams.minWidth)
+//                                : (int) (screenWidth * mParams.minWidth);
+//                        if (params.width < minWidth || (mView != null && mView.getMeasuredWidth() < minWidth)) {
+//                            params.width = minWidth;
+//                        }
+//                    }
+//                    if (mParams.minHeight > 0) {
+//                        int minHeight = mParams.minHeight > 1 ? ViewUtils.dp2px(mParams.minHeight)
+//                                : (int) (screenHeight * mParams.minHeight);
+//                        if (params.height < minHeight || (mView != null && mView.getMeasuredHeight() < minHeight)) {
+//                            params.height = minHeight;
+//                        }
+//                    }
+//                    if (mParams.maxWidth > 0) {
+//                        int maxWidth = mParams.maxWidth > 1 ? ViewUtils.dp2px(mParams.maxWidth)
+//                                : (int) (screenWidth * mParams.maxWidth);
+//                        if (params.width > maxWidth || (mView != null && mView.getMeasuredWidth() > maxWidth)) {
+//                            params.width = maxWidth;
+//                        }
+//                    }
+//                    if (mParams.maxHeight > 0) {
+//                        int maxHeight = mParams.maxHeight > 1 ? ViewUtils.dp2px(mParams.maxHeight)
+//                                : (int) (screenHeight * mParams.maxHeight);
+//                        if (params.height > maxHeight || (mView != null && mView.getMeasuredHeight() > maxHeight)) {
+//                            params.height = maxHeight;
+//                        }
+//                    }
+//                    if (mView != null) {
+//                        ViewGroup.LayoutParams layoutParams = mView.getLayoutParams();
+//                        if (layoutParams == null) {
+//                            layoutParams = new ViewGroup.LayoutParams(params.width, params.height);
+//                            mView.setLayoutParams(layoutParams);
+//                        } else {
+//                            if (params.width > 0) {
+//                                layoutParams.width = params.width;
+//                            }
+//                            if (params.height > 0) {
+//                                layoutParams.height = params.height;
+//                            }
+//                        }
+//                    }
+//
+//                    if (mParams.windowAnimations > 0) {
+//                        window.setWindowAnimations(mParams.windowAnimations);
+//                    }
+//                    if (mParams.hideNavigation) {
+//                        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+//                            uiOptions |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+//                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
+//                        }
+//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//                            uiOptions |= View.SYSTEM_UI_FLAG_IMMERSIVE;
+//                        }
+//                        window.getDecorView().setSystemUiVisibility(uiOptions);
+//                    }
+//                }
+//            });
+        }
+        return mDialog;
+    }
 
-                    if (mParams.windowAnimations > 0) {
-                        window.setWindowAnimations(mParams.windowAnimations);
+    @Override
+    public AlertDialog show() {
+        final Window window = mDialog.getWindow();
+        if (window != null) {
+            WindowManager.LayoutParams params = window.getAttributes();
+            int screenWidth = ViewUtils.getScreenWidth();
+            int screenHeight = ViewUtils.getScreenHeight();
+            if (mContext instanceof Activity && !ViewUtils.isFullScreen((Activity) mContext)) {
+                screenHeight = -ViewUtils.getStatusBarHeight();
+            }
+            if (mParams.width > 0) {
+                params.width = mParams.width > 1 ? ViewUtils.dp2px(mParams.width)
+                        : (int) (screenWidth * mParams.width);
+            }
+            if (mParams.height > 0) {
+                params.height = mParams.height > 1 ? ViewUtils.dp2px(mParams.height)
+                        : (int) (screenHeight * mParams.height);
+            }
+            if (mParams.minWidth > 0) {
+                int minWidth = mParams.minWidth > 1 ? ViewUtils.dp2px(mParams.minWidth)
+                        : (int) (screenWidth * mParams.minWidth);
+                if (params.width < minWidth || (mView != null && mView.getMeasuredWidth() < minWidth)) {
+                    params.width = minWidth;
+                }
+            }
+            if (mParams.minHeight > 0) {
+                int minHeight = mParams.minHeight > 1 ? ViewUtils.dp2px(mParams.minHeight)
+                        : (int) (screenHeight * mParams.minHeight);
+                if (params.height < minHeight || (mView != null && mView.getMeasuredHeight() < minHeight)) {
+                    params.height = minHeight;
+                }
+            }
+            if (mParams.maxWidth > 0) {
+                int maxWidth = mParams.maxWidth > 1 ? ViewUtils.dp2px(mParams.maxWidth)
+                        : (int) (screenWidth * mParams.maxWidth);
+                if (params.width > maxWidth || (mView != null && mView.getMeasuredWidth() > maxWidth)) {
+                    params.width = maxWidth;
+                }
+            }
+            if (mParams.maxHeight > 0) {
+                int maxHeight = mParams.maxHeight > 1 ? ViewUtils.dp2px(mParams.maxHeight)
+                        : (int) (screenHeight * mParams.maxHeight);
+                if (params.height > maxHeight || (mView != null && mView.getMeasuredHeight() > maxHeight)) {
+                    params.height = maxHeight;
+                }
+            }
+            if (mView != null) {
+                ViewGroup.LayoutParams layoutParams = mView.getLayoutParams();
+                if (layoutParams == null) {
+                    layoutParams = new ViewGroup.LayoutParams(params.width, params.height);
+                    mView.setLayoutParams(layoutParams);
+                } else {
+                    if (params.width > 0) {
+                        layoutParams.width = params.width;
                     }
-                    if (mParams.hideNavigation) {
-                        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-                            uiOptions |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE
-                                    | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
-                        }
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                            uiOptions |= View.SYSTEM_UI_FLAG_IMMERSIVE;
-                        }
-                        window.getDecorView().setSystemUiVisibility(uiOptions);
+                    if (params.height > 0) {
+                        layoutParams.height = params.height;
                     }
                 }
-            });
+            }
+
+            if (mParams.windowAnimations > 0) {
+                window.setWindowAnimations(mParams.windowAnimations);
+            }
+            if (mParams.hideNavigation) {
+                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                    uiOptions |= View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                            | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                    uiOptions |= View.SYSTEM_UI_FLAG_IMMERSIVE;
+                }
+                window.getDecorView().setSystemUiVisibility(uiOptions);
+            }
         }
+        super.show();
         return mDialog;
     }
 
