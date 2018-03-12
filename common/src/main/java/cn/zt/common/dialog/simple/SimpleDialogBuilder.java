@@ -241,6 +241,7 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
 
     @Override
     public AlertDialog show() {
+        super.show();
         final Window window = mDialog.getWindow();
         if (window != null) {
             WindowManager.LayoutParams params = window.getAttributes();
@@ -315,7 +316,6 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
                 window.getDecorView().setSystemUiVisibility(uiOptions);
             }
         }
-        super.show();
         return mDialog;
     }
 
