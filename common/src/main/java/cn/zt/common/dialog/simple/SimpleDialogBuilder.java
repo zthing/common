@@ -244,10 +244,10 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
         super.show();
         final Window window = mDialog.getWindow();
         if (window != null) {
-            WindowManager.LayoutParams params = window.getAttributes();
             if (mParams.gravity != 0) {
-                params.gravity = mParams.gravity;
+                window.setGravity(mParams.gravity);
             }
+            WindowManager.LayoutParams params = window.getAttributes();
             int screenWidth = ViewUtils.getScreenWidth();
             int screenHeight = ViewUtils.getScreenHeight();
             if (mContext instanceof Activity && !ViewUtils.isFullScreen((Activity) mContext)) {
