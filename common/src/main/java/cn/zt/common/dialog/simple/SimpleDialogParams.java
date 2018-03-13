@@ -40,6 +40,8 @@ public class SimpleDialogParams {
     float width;
     float height;
 
+    int gravity;
+
     private Builder builder;
 
     public Builder getBuilder() {
@@ -76,7 +78,8 @@ public class SimpleDialogParams {
                     .maxWidth(bParams.maxWidth)
                     .maxHeight(bParams.maxHeight)
                     .width(bParams.width)
-                    .height(bParams.height);
+                    .height(bParams.height)
+                    .gravity(bParams.gravity);
         }
 
         /**
@@ -245,6 +248,14 @@ public class SimpleDialogParams {
          */
         public Builder height(float height) {
             params.height = height;
+            return this;
+        }
+
+        /**
+         * 弹窗位置
+         */
+        public Builder gravity(int gravity) {
+            params.gravity = gravity;
             return this;
         }
 

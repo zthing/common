@@ -245,10 +245,13 @@ public abstract class SimpleDialogBuilder<C extends SimpleDialogBuilder> extends
         final Window window = mDialog.getWindow();
         if (window != null) {
             WindowManager.LayoutParams params = window.getAttributes();
+            if (mParams.gravity != 0) {
+                params.gravity = mParams.gravity;
+            }
             int screenWidth = ViewUtils.getScreenWidth();
             int screenHeight = ViewUtils.getScreenHeight();
             if (mContext instanceof Activity && !ViewUtils.isFullScreen((Activity) mContext)) {
-                screenHeight = -ViewUtils.getStatusBarHeight();
+                screenHeight -= ViewUtils.getStatusBarHeight();
             }
             if (mParams.width > 0) {
                 params.width = mParams.width > 1 ? ViewUtils.dp2px(mParams.width)
