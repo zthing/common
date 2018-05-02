@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import cn.zt.common.dialog.custom.TextDialogBuilder
 import cn.zt.common.dialog.custom.Utils
-import com.blankj.utilcode.util.RegexUtils
+import cn.zt.common.utils.RegexUtils
 import com.blankj.utilcode.util.ToastUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
                     ToastUtils.showShort("请输入正确的IP地址")
                 }
             }).show()
+        }
+        TextDialogBuilder(this).title("标题").message("提示提示").show()
+        imageView.setOnClickListener {
+            ToastUtils.showShort("click")
         }
     }
 }

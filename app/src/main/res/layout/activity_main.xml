@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context="cn.zt.common.MainActivity">
 
     <cn.zt.common.widget.TypefaceTextView
@@ -13,4 +15,22 @@
         android:layout_height="wrap_content"
         android:text="弹窗测试"
         android:textSize="30sp"/>
+
+    <cn.zt.common.widget.ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="centerCrop"
+        app:common_backgroundColor="#abcdef"
+        app:common_backgroundColorPress="#ccddff"
+        app:common_cornerRadius="50dp"
+        app:common_cornerRadiusTR="0dp"
+        app:common_elevation="2dp"
+        app:common_enabledCornerClip="true"
+        app:common_enabledRipple="true"
+        app:common_strokeColor="@android:color/holo_blue_dark"
+        app:common_strokeColorPress="@android:color/holo_red_dark"
+        app:common_strokeWidth="1px"
+        tools:targetApi="lollipop"/>
 </LinearLayout>

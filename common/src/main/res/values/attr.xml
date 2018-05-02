@@ -16,4 +16,50 @@
     <declare-styleable name="GridLayoutKeyBoard">
         <attr name="inputView" format="reference"/> <!--输入视图的 ID-->
     </declare-styleable>
+
+    <attr name="common_enabledCornerClip" format="boolean"/>
+    <attr name="common_cornerRadius" format="dimension"/>
+    <attr name="common_cornerRadiusTL" format="dimension"/>
+    <attr name="common_cornerRadiusTR" format="dimension"/>
+    <attr name="common_cornerRadiusBL" format="dimension"/>
+    <attr name="common_cornerRadiusBR" format="dimension"/>
+    <attr name="common_strokeWidth" format="dimension"/>
+    <attr name="common_strokeColor" format="color"/>
+    <attr name="common_strokeColorPress" format="color"/>
+    <attr name="common_backgroundColor" format="color"/>
+    <attr name="common_backgroundColorPress" format="color"/>
+    <attr name="common_enabledRipple" format="boolean"/>
+    <attr name="common_elevation" format="dimension"/>
+
+    <declare-styleable name="CommonViewDelegate">
+        <attr name="common_enabledCornerClip"/>
+        <attr name="common_cornerRadius"/>
+        <attr name="common_cornerRadiusTL"/>
+        <attr name="common_cornerRadiusTR"/>
+        <attr name="common_cornerRadiusBL"/>
+        <attr name="common_cornerRadiusBR"/>
+        <attr name="common_strokeWidth"/>
+        <attr name="common_strokeColor"/>
+        <attr name="common_strokeColorPress"/>
+        <attr name="common_backgroundColor"/>
+        <attr name="common_backgroundColorPress"/>
+        <attr name="common_enabledRipple"/>
+        <attr name="common_elevation"/>
+    </declare-styleable>
+
+    <declare-styleable name="ImageView">
+        <attr name="common_enabledCornerClip"/>
+        <attr name="common_cornerRadius"/>
+        <attr name="common_cornerRadiusTL"/>
+        <attr name="common_cornerRadiusTR"/>
+        <attr name="common_cornerRadiusBL"/>
+        <attr name="common_cornerRadiusBR"/>
+        <attr name="common_strokeWidth"/>
+        <attr name="common_strokeColor"/>
+        <attr name="common_strokeColorPress"/>
+        <attr name="common_backgroundColor"/>
+        <attr name="common_backgroundColorPress"/>
+        <attr name="common_enabledRipple"/>
+        <attr name="common_elevation"/>
+    </declare-styleable>
 </resources>
