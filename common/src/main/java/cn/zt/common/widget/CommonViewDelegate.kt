@@ -32,14 +32,14 @@ class CommonViewDelegate(val view: View, attrs: AttributeSet?) {
                 view.postInvalidate()
             }
         }
-    var cornerRadius = 0
-        set(value) {
-            if (field != value) {
-                field = value
-                setBackground()
-                if (enabledCornerClip) view.postInvalidate()
-            }
-        }
+    fun setCornerRadius(cornerRadius:Int){
+        cornerRadiusTL = cornerRadius
+        cornerRadiusTR = cornerRadius
+        cornerRadiusBL = cornerRadius
+        cornerRadiusBL = cornerRadius
+        setBackground()
+        if (enabledCornerClip) view.postInvalidate()
+    }
     var cornerRadiusTL = -1
         set(value) {
             if (field != value) {
@@ -128,11 +128,11 @@ class CommonViewDelegate(val view: View, attrs: AttributeSet?) {
 
         val osa = view.context.obtainStyledAttributes(attrs, R.styleable.CommonViewDelegate)
         enabledCornerClip = osa.getBoolean(R.styleable.CommonViewDelegate_common_enabledCornerClip, enabledCornerClip)
-        cornerRadius = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadius, cornerRadius)
-        cornerRadiusTL = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusTL, cornerRadiusTL)
-        cornerRadiusTR = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusTR, cornerRadiusTR)
-        cornerRadiusBL = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusBL, cornerRadiusBL)
-        cornerRadiusBR = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusBR, cornerRadiusBR)
+        val cornerRadius = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadius, -1)
+        cornerRadiusTL = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusTL, cornerRadius)
+        cornerRadiusTR = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusTR, cornerRadius)
+        cornerRadiusBL = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusBL, cornerRadius)
+        cornerRadiusBR = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_cornerRadiusBR, cornerRadius)
         strokeWidth = osa.getDimensionPixelSize(R.styleable.CommonViewDelegate_common_strokeWidth, strokeWidth)
         strokeColor = osa.getColor(R.styleable.CommonViewDelegate_common_strokeColor, strokeColor)
         strokeColorPress = osa.getColor(R.styleable.CommonViewDelegate_common_strokeColorPress, strokeColorPress)
@@ -186,24 +186,8 @@ class CommonViewDelegate(val view: View, attrs: AttributeSet?) {
         }
     }
 
-    fun clipCornerRadius(canvas: Canvas?) {
-        if (canvas != null && enabledCornerClip) {
-            cornerClipPath.reset()
-            cornerClipPath.addRoundRect(RectF(0f, 0f, canvas.width.toFloat(), canvas.height.toFloat()), radiusArray, Path.Direction.CW)
-            canvas.drawPath(cornerClipPath, cornerClipPaint)
-        }
-    }
-
     private fun setDrawable(gd: GradientDrawable, color: Int, strokeColor: Int) {
         gd.setColor(color)
-        radiusArray[0] = cornerRadius.toFloat()
-        radiusArray[1] = cornerRadius.toFloat()
-        radiusArray[2] = cornerRadius.toFloat()
-        radiusArray[3] = cornerRadius.toFloat()
-        radiusArray[4] = cornerRadius.toFloat()
-        radiusArray[5] = cornerRadius.toFloat()
-        radiusArray[6] = cornerRadius.toFloat()
-        radiusArray[7] = cornerRadius.toFloat()
         if (cornerRadiusTL > -1) {
             radiusArray[0] = cornerRadiusTL.toFloat()
             radiusArray[1] = cornerRadiusTL.toFloat()
@@ -222,7 +206,7 @@ class CommonViewDelegate(val view: View, attrs: AttributeSet?) {
         }
         gd.cornerRadii = radiusArray
 
-        gd.setStroke(strokeWidth, strokeColor)
+        gd.setStroke(strokeWidth, if (strokeColor == 0) color else strokeColor)
     }
 
     private fun getPressedColorSelector(normalColor: Int, pressedColor: Int): ColorStateList {
@@ -231,5 +215,13 @@ class CommonViewDelegate(val view: View, attrs: AttributeSet?) {
                         , intArrayOf(android.R.attr.state_activated), intArrayOf())
                 , intArrayOf(pressedColor, pressedColor, pressedColor, normalColor)
         )
+    }
+
+    fun clipCornerRadius(canvas: Canvas?) {
+        if (canvas != null && enabledCornerClip) {
+            cornerClipPath.reset()
+            cornerClipPath.addRoundRect(RectF(0f, 0f, canvas.width.toFloat(), canvas.height.toFloat()), radiusArray, Path.Direction.CW)
+            canvas.drawPath(cornerClipPath, cornerClipPaint)
+        }
     }
 }
