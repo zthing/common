@@ -62,4 +62,68 @@
         <attr name="common_enabledRipple"/>
         <attr name="common_elevation"/>
     </declare-styleable>
+
+    <declare-styleable name="TextView">
+        <attr name="common_enabledCornerClip"/>
+        <attr name="common_cornerRadius"/>
+        <attr name="common_cornerRadiusTL"/>
+        <attr name="common_cornerRadiusTR"/>
+        <attr name="common_cornerRadiusBL"/>
+        <attr name="common_cornerRadiusBR"/>
+        <attr name="common_strokeWidth"/>
+        <attr name="common_strokeColor"/>
+        <attr name="common_strokeColorPress"/>
+        <attr name="common_backgroundColor"/>
+        <attr name="common_backgroundColorPress"/>
+        <attr name="common_enabledRipple"/>
+        <attr name="common_elevation"/>
+    </declare-styleable>
+
+    <declare-styleable name="LinearLayout">
+        <attr name="common_enabledCornerClip"/>
+        <attr name="common_cornerRadius"/>
+        <attr name="common_cornerRadiusTL"/>
+        <attr name="common_cornerRadiusTR"/>
+        <attr name="common_cornerRadiusBL"/>
+        <attr name="common_cornerRadiusBR"/>
+        <attr name="common_strokeWidth"/>
+        <attr name="common_strokeColor"/>
+        <attr name="common_strokeColorPress"/>
+        <attr name="common_backgroundColor"/>
+        <attr name="common_backgroundColorPress"/>
+        <attr name="common_enabledRipple"/>
+        <attr name="common_elevation"/>
+    </declare-styleable>
+
+    <declare-styleable name="FrameLayout">
+        <attr name="common_enabledCornerClip"/>
+        <attr name="common_cornerRadius"/>
+        <attr name="common_cornerRadiusTL"/>
+        <attr name="common_cornerRadiusTR"/>
+        <attr name="common_cornerRadiusBL"/>
+        <attr name="common_cornerRadiusBR"/>
+        <attr name="common_strokeWidth"/>
+        <attr name="common_strokeColor"/>
+        <attr name="common_strokeColorPress"/>
+        <attr name="common_backgroundColor"/>
+        <attr name="common_backgroundColorPress"/>
+        <attr name="common_enabledRipple"/>
+        <attr name="common_elevation"/>
+    </declare-styleable>
+
+    <declare-styleable name="RelativeLayout">
+        <attr name="common_enabledCornerClip"/>
+        <attr name="common_cornerRadius"/>
+        <attr name="common_cornerRadiusTL"/>
+        <attr name="common_cornerRadiusTR"/>
+        <attr name="common_cornerRadiusBL"/>
+        <attr name="common_cornerRadiusBR"/>
+        <attr name="common_strokeWidth"/>
+        <attr name="common_strokeColor"/>
+        <attr name="common_strokeColorPress"/>
+        <attr name="common_backgroundColor"/>
+        <attr name="common_backgroundColorPress"/>
+        <attr name="common_enabledRipple"/>
+        <attr name="common_elevation"/>
+    </declare-styleable>
 </resources>
